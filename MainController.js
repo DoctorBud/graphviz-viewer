@@ -1,5 +1,6 @@
 import Viz from 'viz.js';
 import _ from 'lodash';
+import ogv from 'obographviz';
 
 /* eslint new-cap: 0 */
 
@@ -75,6 +76,23 @@ export default class MainController {
     this.renderDOT();
   }
 
+  loadClass(classId, ontol) {
+    var url = 'http://localhost:5000/api/ontol/subgraph/'+ontol+'/'+classId+'?relation=subClassOf&relation=BFO%3A0000050'
+    var that = this;
+    this.$http.get(url, {withCredentials: false}).then(      
+        function(result) {
+
+            var xogv = new ogv.OboGraphViz(result.data)
+            var dot = xogv.renderDot([], {})
+            that.loadSource(dot, classId, url);
+        },
+        function(error) {
+            console.log('loadURL error', error);
+            that.setError('Error loading URL ' + url + '\n\n' + JSON.stringify(error));
+        });
+      
+  }
+    
   loadURL(importURL) {
     var that = this;
     this.importURL = importURL;

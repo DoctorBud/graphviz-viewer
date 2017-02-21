@@ -54,18 +54,18 @@
         <div class="col-xs-12 col-md-3">
           <div class="input-group input-group-sm">
             <input
-              ng-model="c.importURL"
+              ng-model="c.classId"
               type="text"
               class="form-control"
-              placeholder="Enter a URL to a graphviz file"
-              aria-describedby="import-url">
+              placeholder="Enter ID of uberon class"
+              aria-describedby="import-class-id">
 
             <span class="input-group-btn">
               <button
                 type="button"
-                ng-disabled="c.importURL.length === 0"
+                ng-disabled="c.classId.length === 0"
                 class="btn btn-success btn-xs btn-block"
-                ng-click="c.loadURL(c.importURL)">
+                ng-click="c.loadClass(c.classId)">
                 Load
               </button>
             </span>

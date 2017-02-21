@@ -12,6 +12,7 @@
   "author": "Daniel Keith <dan@quantumclay.com> (http://doctorbud.github.io)",
   "license": "ISC",
   "dependencies": {
+    "obographviz": "cmungall/obographviz",
     "angular": "^1.6.1",
     "angular-resource": "^1.6.1",
     "angular-ui-bootstrap": "^2.4.0",

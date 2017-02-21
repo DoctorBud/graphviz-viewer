@@ -22,80 +22,29 @@
 
       <div class="row">
         <div class="col-xs-12 col-md-3">
-          <div class="btn-group btn-group-block" uib-dropdown keyboard-nav>
-            <button
-              id="simple-btn-keyboard-nav"
-              type="button"
-              class="btn btn-sm btn-primary btn-block"
-              uib-dropdown-toggle>
-                Examples <span class="caret"></span>
-            </button>
-            <ul
-              class="dropdown-menu btn-group-block"
-              uib-dropdown-menu
-              role="menu"
-              aria-labelledby="simple-btn-keyboard-nav">
-              <li ng-repeat="e in c.examples" role="menuitem">
-                <a ng-click="c.loadSource(e.file, e.title, e.url)" href="#">
-                  {{e.title}}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-3">
-          <div
-            class="btn btn-primary btn-block btn-sm"
-            ngf-select="c.loadFile($files[0])"
-            ngf-multiple="false">
-            Select File
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-3">
           <div class="input-group input-group-sm">
             <input
-              ng-model="c.importURL"
+              ng-model="c.ontology"
               type="text"
               class="form-control"
-              placeholder="Enter a URL to a graphviz file"
-              aria-describedby="import-url">
-
+              placeholder="Enter ontology (go, uberon, etc)"
+              aria-describedby="ontology-id">
+            <input
+              ng-model="c.classId"
+              type="text"
+              class="form-control"
+              placeholder="Enter ID of ontology class"
+              aria-describedby="import-class-id">
             <span class="input-group-btn">
               <button
                 type="button"
-                ng-disabled="c.importURL.length === 0"
+                ng-disabled="c.classId.length === 0"
                 class="btn btn-success btn-xs btn-block"
-                ng-click="c.loadURL(c.importURL)">
-                Load
+                ng-click="c.loadClass(c.classId, c.ontology)">
+                Display
               </button>
             </span>
           </div>
-        </div>
-        <div class="col-xs-12 col-md-2">
-          <div
-            ngf-drop
-            ngf-select
-            ng-model="c.file"
-            class="drop-box"
-            ngf-drag-over-class="'dragover'"
-            ngf-multiple="false"
-            ngf-allow-dir="false"
-            accept="*"
-            ngf-pattern="'*'">
-            <i>Drop file here</i>
-          </div>
-          <div ngf-no-file-drop>
-            File Drag/Drop is not supported for this browser
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-1">
-          <button
-            type="button"
-            href="https://github.com/DoctorBud/graphviz-viewer/blob/master/README.md"
-            target="_blank"
-            class="btn btn-sm btn-info btn-block">
-            <i class="glyphicon glyphicon-question-sign"></i>
-          </button>
         </div>
       </div>
 
