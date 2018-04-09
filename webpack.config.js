@@ -20,7 +20,7 @@ var config = {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.json$/,
@@ -29,7 +29,7 @@ var config = {
       {
         // Reference: https://github.com/babel/babel-loader
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
             // https://github.com/babel/babel-loader#options
             cacheDirectory: true,
@@ -41,7 +41,7 @@ var config = {
 
       {
         test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|txt|ico)$/,
-        loader: 'file',
+        loader: 'file-loader',
         include: [bs]
       }
     ]
