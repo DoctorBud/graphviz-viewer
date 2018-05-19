@@ -1,4 +1,6 @@
 import Viz from 'viz.js';
+const { Module, render } = require('viz.js/full.render.js');
+
 import _ from 'lodash';
 
 /* eslint new-cap: 0 */
@@ -59,7 +61,14 @@ export default class MainController {
 
   renderDOT() {
     var renderElement = document.getElementById('DOTRender');
-    renderElement.innerHTML = Viz(this.DOTSource);
+    // renderElement.innerHTML = Viz(this.DOTSource);
+
+    let viz = new Viz({ Module: Module, render: render });
+
+    viz.renderString(this.DOTSource)
+    .then(result => {
+      renderElement.innerHTML = result;
+    });
   }
 
   loadSource(source, title, url) {
