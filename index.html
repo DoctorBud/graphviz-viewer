@@ -36,7 +36,7 @@
               role="menu"
               aria-labelledby="simple-btn-keyboard-nav">
               <li ng-repeat="e in c.examples" role="menuitem">
-                <a ng-click="c.loadSource(e.file, e.title, e.url)" href="#">
+                <a ng-click="c.loadSource(e.file.default, e.title, e.url)" href="#">
                   {{e.title}}
                 </a>
               </li>

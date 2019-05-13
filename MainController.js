@@ -72,6 +72,7 @@ export default class MainController {
   }
 
   loadSource(source, title, url) {
+    console.log('loadSource', source.slice(0, 20), title, url);
     this.DOTSource = source;
     this.DOTTitle = title;
     this.errorMessage = null;

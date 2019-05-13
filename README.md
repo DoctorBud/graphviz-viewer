@@ -54,3 +54,9 @@ open http://localhost:8080/webpack-dev-server/graphviz-viewer # On MacOSX
 #   http://localhost:8080/webpack-dev-server/graphviz-viewer
 #
 ```
+
+
+### Versions
+
+**1.0.0** - Initial version
+**1.0.1** - Update various dependencies

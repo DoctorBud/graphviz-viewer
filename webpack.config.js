@@ -12,12 +12,13 @@ var production = process.env.BUILD === 'production';
 
 var config = {
   entry: './app.js',
+  mode: process.env.BUILD,
   output: {
     path: dist,
     filename: "graphviz-viewer.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
@@ -33,7 +34,7 @@ var config = {
         query: {
             // https://github.com/babel/babel-loader#options
             cacheDirectory: true,
-            presets: ['es2015']
+            presets: ['@babel/preset-env'],
         },
         exclude: /node_modules/,
         include: [app]
@@ -64,24 +65,5 @@ var config = {
     ])
   ]
 };
-
-if (production) {
-  config.plugins.push(
-    // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-    // Minify all javascript, switch loaders to minimizing mode
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      // mangle: false,
-      mangle: {
-        except: ['$', '$scope', '$compile', '$timeout', '$rootScope', '$http',
-                  '$rootScopeProvider',
-                  '$location', '$state', '$q']
-      },
-      compress: {
-        warnings: false
-      }
-    })
-  );
-}
 
 module.exports = config;
